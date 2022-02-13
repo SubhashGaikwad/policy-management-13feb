@@ -1,0 +1,218 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-vehicle-details-heading"
+        data-cy="VehicleDetailsCreateUpdateHeading"
+        jhiTranslate="policyManagement13FebApp.vehicleDetails.home.createOrEditLabel"
+      >
+        Create or edit a Vehicle Details
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.vehicleDetails.name" for="field_name">Name</label>
+          <input type="number" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.vehicleDetails.invoiceValue" for="field_invoiceValue"
+            >Invoice Value</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="invoiceValue"
+            id="field_invoiceValue"
+            data-cy="invoiceValue"
+            formControlName="invoiceValue"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.vehicleDetails.idv" for="field_idv">Idv</label>
+          <input type="text" class="form-control" name="idv" id="field_idv" data-cy="idv" formControlName="idv" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.vehicleDetails.enginNumber" for="field_enginNumber"
+            >Engin Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="enginNumber"
+            id="field_enginNumber"
+            data-cy="enginNumber"
+            formControlName="enginNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.vehicleDetails.chassisNumber" for="field_chassisNumber"
+            >Chassis Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="chassisNumber"
+            id="field_chassisNumber"
+            data-cy="chassisNumber"
+            formControlName="chassisNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="policyManagement13FebApp.vehicleDetails.registrationNumber"
+            for="field_registrationNumber"
+            >Registration Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="registrationNumber"
+            id="field_registrationNumber"
+            data-cy="registrationNumber"
+            formControlName="registrationNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="policyManagement13FebApp.vehicleDetails.seatingCapacity"
+            for="field_seatingCapacity"
+            >Seating Capacity</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="seatingCapacity"
+            id="field_seatingCapacity"
+            data-cy="seatingCapacity"
+            formControlName="seatingCapacity"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.vehicleDetails.zone" for="field_zone">Zone</label>
+          <select class="form-control" name="zone" formControlName="zone" id="field_zone" data-cy="zone">
+            <option [ngValue]="null">{{ 'policyManagement13FebApp.Zone.null' | translate }}</option>
+            <option *ngFor="let zone of zoneValues" [value]="zone">{{ 'policyManagement13FebApp.Zone.' + zone | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="policyManagement13FebApp.vehicleDetails.yearOfManufacturing"
+            for="field_yearOfManufacturing"
+            >Year Of Manufacturing</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="yearOfManufacturing"
+            id="field_yearOfManufacturing"
+            data-cy="yearOfManufacturing"
+            formControlName="yearOfManufacturing"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="policyManagement13FebApp.vehicleDetails.registrationDate"
+            for="field_registrationDate"
+            >Registration Date</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="registrationDate"
+            id="field_registrationDate"
+            data-cy="registrationDate"
+            formControlName="registrationDate"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.vehicleDetails.lastModified" for="field_lastModified"
+            >Last Modified</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModified"
+            id="field_lastModified"
+            data-cy="lastModified"
+            formControlName="lastModified"
+          />
+          <div
+            *ngIf="editForm.get('lastModified')!.invalid && (editForm.get('lastModified')!.dirty || editForm.get('lastModified')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModified')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.vehicleDetails.lastModifiedBy" for="field_lastModifiedBy"
+            >Last Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastModifiedBy')!.invalid && (editForm.get('lastModifiedBy')!.dirty || editForm.get('lastModifiedBy')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModifiedBy')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

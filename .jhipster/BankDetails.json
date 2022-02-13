@@ -1,0 +1,66 @@
+{
+  "applications": "*",
+  "changelogDate": "20220213105436",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "bank_details",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "branch",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "branchCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "contactNo",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "ifcCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "account",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accountType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "BankDetails",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "policy",
+      "otherEntityRelationshipName": "bankDetails",
+      "ownerSide": false,
+      "relationshipName": "policy",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

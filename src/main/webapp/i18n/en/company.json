@@ -1,0 +1,36 @@
+{
+  "policyManagement13FebApp": {
+    "company": {
+      "home": {
+        "title": "Companies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Company",
+        "createOrEditLabel": "Create or edit a Company",
+        "notFound": "No Companies found"
+      },
+      "created": "A new Company is created with identifier {{ param }}",
+      "updated": "A Company is updated with identifier {{ param }}",
+      "deleted": "A Company is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Company {{ id }}?"
+      },
+      "detail": {
+        "title": "Company"
+      },
+      "id": "ID",
+      "name": "Name",
+      "address": "Address",
+      "branch": "Branch",
+      "brnachCode": "Brnach Code",
+      "email": "Email",
+      "imageUrl": "Image Url",
+      "contactNo": "Contact No",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "companyType": "Company Type",
+      "product": "Product",
+      "address": "Address",
+      "policy": "Policy"
+    }
+  }
+}

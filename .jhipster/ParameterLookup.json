@@ -1,0 +1,42 @@
+{
+  "applications": "*",
+  "changelogDate": "20220213105434",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "parameter_lookup",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "ParameterType",
+      "fieldValues": "MAKE (Make),MODEL (Model),VARIENT (Varient),CC (CubicCapacity),VEHICAL (VehicalType),HEATH (HeathInsurance),MOTAR (MotarInsurance)"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "ParameterLookup",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "vehicleDetails",
+      "otherEntityRelationshipName": "parameterLookup",
+      "relationshipName": "vehicleDetails",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

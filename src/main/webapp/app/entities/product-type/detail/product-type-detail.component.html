@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="productType">
+      <h2 data-cy="productTypeDetailsHeading">
+        <span jhiTranslate="policyManagement13FebApp.productType.detail.title">Product Type</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ productType.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.productType.name">Name</span></dt>
+        <dd>
+          <span>{{ productType.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.productType.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ productType.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.productType.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ productType.lastModifiedBy }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/product-type', productType.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

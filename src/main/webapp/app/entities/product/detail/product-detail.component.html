@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="product">
+      <h2 data-cy="productDetailsHeading"><span jhiTranslate="policyManagement13FebApp.product.detail.title">Product</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ product.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.product.name">Name</span></dt>
+        <dd>
+          <span>{{ product.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.product.planNo">Plan No</span></dt>
+        <dd>
+          <span>{{ product.planNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.product.uinNo">Uin No</span></dt>
+        <dd>
+          <span>{{ product.uinNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.product.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ product.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.product.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ product.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.product.productDetails">Product Details</span></dt>
+        <dd>
+          <div *ngIf="product.productDetails">
+            <a [routerLink]="['/product-details', product.productDetails?.id, 'view']">{{ product.productDetails?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.product.company">Company</span></dt>
+        <dd>
+          <div *ngIf="product.company">
+            <a [routerLink]="['/company', product.company?.id, 'view']">{{ product.company?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

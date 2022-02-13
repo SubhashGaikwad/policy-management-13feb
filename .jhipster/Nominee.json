@@ -1,0 +1,49 @@
+{
+  "applications": "*",
+  "changelogDate": "20220213105435",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "nominee",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "relation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomineePercentage",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "contactNo",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Nominee",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "policy",
+      "otherEntityRelationshipName": "nominee",
+      "relationshipName": "policy",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

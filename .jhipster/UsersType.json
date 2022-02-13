@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20220213105446",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "users_type",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "UsersType",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "policyUsers",
+      "otherEntityRelationshipName": "usersType",
+      "ownerSide": false,
+      "relationshipName": "policyUsers",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

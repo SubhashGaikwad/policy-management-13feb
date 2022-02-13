@@ -1,0 +1,120 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="policyUsers">
+      <h2 data-cy="policyUsersDetailsHeading">
+        <span jhiTranslate="policyManagement13FebApp.policyUsers.detail.title">Policy Users</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ policyUsers.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.groupCode">Group Code</span></dt>
+        <dd>
+          <span>{{ policyUsers.groupCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.groupHeadName">Group Head Name</span></dt>
+        <dd>
+          <span>{{ policyUsers.groupHeadName }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ policyUsers.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ policyUsers.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.birthDate">Birth Date</span></dt>
+        <dd>
+          <span>{{ policyUsers.birthDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.marriageDate">Marriage Date</span></dt>
+        <dd>
+          <span>{{ policyUsers.marriageDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.userTypeId">User Type Id</span></dt>
+        <dd>
+          <span>{{ policyUsers.userTypeId }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.username">Username</span></dt>
+        <dd>
+          <span>{{ policyUsers.username }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.password">Password</span></dt>
+        <dd>
+          <span>{{ policyUsers.password }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.email">Email</span></dt>
+        <dd>
+          <span>{{ policyUsers.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.imageUrl">Image Url</span></dt>
+        <dd>
+          <span>{{ policyUsers.imageUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'policyManagement13FebApp.StatusInd.' + policyUsers.status }}">{{ policyUsers.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.activated">Activated</span></dt>
+        <dd>
+          <span>{{ policyUsers.activated }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.licenceExpiryDate">Licence Expiry Date</span></dt>
+        <dd>
+          <span>{{ policyUsers.licenceExpiryDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.mobileNo">Mobile No</span></dt>
+        <dd>
+          <span>{{ policyUsers.mobileNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.aadharCardNuber">Aadhar Card Nuber</span></dt>
+        <dd>
+          <span>{{ policyUsers.aadharCardNuber }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.pancardNumber">Pancard Number</span></dt>
+        <dd>
+          <span>{{ policyUsers.pancardNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.oneTimePassword">One Time Password</span></dt>
+        <dd>
+          <span>{{ policyUsers.oneTimePassword }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.otpExpiryTime">Otp Expiry Time</span></dt>
+        <dd>
+          <span>{{ policyUsers.otpExpiryTime }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ policyUsers.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ policyUsers.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policyUsers.usersType">Users Type</span></dt>
+        <dd>
+          <div *ngIf="policyUsers.usersType">
+            <a [routerLink]="['/users-type', policyUsers.usersType?.id, 'view']">{{ policyUsers.usersType?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/policy-users', policyUsers.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

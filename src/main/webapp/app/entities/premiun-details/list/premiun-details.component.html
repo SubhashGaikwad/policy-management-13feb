@@ -1,0 +1,150 @@
+<div>
+  <h2 id="page-heading" data-cy="PremiunDetailsHeading">
+    <span jhiTranslate="policyManagement13FebApp.premiunDetails.home.title">Premiun Details</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="policyManagement13FebApp.premiunDetails.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-premiun-details"
+        [routerLink]="['/premiun-details/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="policyManagement13FebApp.premiunDetails.home.createLabel"> Create a new Premiun Details </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="premiunDetails?.length === 0">
+    <span jhiTranslate="policyManagement13FebApp.premiunDetails.home.notFound">No premiunDetails found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="premiunDetails && premiunDetails.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="premium">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.premium">Premium</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="otherLoading">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.otherLoading">Other Loading</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="otherDiscount">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.otherDiscount">Other Discount</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="addOnPremium">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.addOnPremium">Add On Premium</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="liabilityPremium">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.liabilityPremium">Liability Premium</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="odPremium">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.odPremium">Od Premium</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="personalAccidentDiscount">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.personalAccidentDiscount">Personal Accident Discount</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="personalAccident">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.personalAccident">Personal Accident</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="grossPremium">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.grossPremium">Gross Premium</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="gst">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.gst">Gst</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="netPremium">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.netPremium">Net Premium</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModified">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.lastModified">Last Modified</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <span jhiTranslate="policyManagement13FebApp.premiunDetails.lastModifiedBy">Last Modified By</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let premiunDetails of premiunDetails; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/premiun-details', premiunDetails.id, 'view']">{{ premiunDetails.id }}</a>
+          </td>
+          <td>{{ premiunDetails.premium }}</td>
+          <td>{{ premiunDetails.otherLoading }}</td>
+          <td>{{ premiunDetails.otherDiscount }}</td>
+          <td>{{ premiunDetails.addOnPremium }}</td>
+          <td>{{ premiunDetails.liabilityPremium }}</td>
+          <td>{{ premiunDetails.odPremium }}</td>
+          <td>{{ premiunDetails.personalAccidentDiscount }}</td>
+          <td>{{ premiunDetails.personalAccident }}</td>
+          <td>{{ premiunDetails.grossPremium }}</td>
+          <td>{{ premiunDetails.gst }}</td>
+          <td>{{ premiunDetails.netPremium }}</td>
+          <td>{{ premiunDetails.lastModified }}</td>
+          <td>{{ premiunDetails.lastModifiedBy }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/premiun-details', premiunDetails.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/premiun-details', premiunDetails.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(premiunDetails)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="premiunDetails && premiunDetails.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

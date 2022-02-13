@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20220213105432",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "vehicle_class",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "VehicleClass",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "policy",
+      "otherEntityRelationshipName": "vehicleClass",
+      "ownerSide": false,
+      "relationshipName": "policy",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
