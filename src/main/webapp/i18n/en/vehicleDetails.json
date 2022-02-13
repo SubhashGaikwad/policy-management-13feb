@@ -1,0 +1,36 @@
+{
+  "policyManagement13FebApp": {
+    "vehicleDetails": {
+      "home": {
+        "title": "Vehicle Details",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Vehicle Details",
+        "createOrEditLabel": "Create or edit a Vehicle Details",
+        "notFound": "No Vehicle Details found"
+      },
+      "created": "A new Vehicle Details is created with identifier {{ param }}",
+      "updated": "A Vehicle Details is updated with identifier {{ param }}",
+      "deleted": "A Vehicle Details is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Vehicle Details {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle Details"
+      },
+      "id": "ID",
+      "name": "Name",
+      "invoiceValue": "Invoice Value",
+      "idv": "Idv",
+      "enginNumber": "Engin Number",
+      "chassisNumber": "Chassis Number",
+      "registrationNumber": "Registration Number",
+      "seatingCapacity": "Seating Capacity",
+      "zone": "Zone",
+      "yearOfManufacturing": "Year Of Manufacturing",
+      "registrationDate": "Registration Date",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "parameterLookup": "Parameter Lookup"
+    }
+  }
+}

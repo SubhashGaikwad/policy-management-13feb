@@ -1,0 +1,78 @@
+{
+  "applications": "*",
+  "changelogDate": "20220213105430",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "premiun_details",
+  "fields": [
+    {
+      "fieldName": "premium",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "otherLoading",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "otherDiscount",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "addOnPremium",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "liabilityPremium",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "odPremium",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "personalAccidentDiscount",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "personalAccident",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "grossPremium",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "gst",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "netPremium",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "PremiunDetails",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "policy",
+      "otherEntityRelationshipName": "premiunDetails",
+      "ownerSide": false,
+      "relationshipName": "policy",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

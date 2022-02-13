@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="rider">
+      <h2 data-cy="riderDetailsHeading"><span jhiTranslate="policyManagement13FebApp.rider.detail.title">Rider</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ rider.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.rider.name">Name</span></dt>
+        <dd>
+          <span>{{ rider.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.rider.commDate">Comm Date</span></dt>
+        <dd>
+          <span>{{ rider.commDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.rider.sum">Sum</span></dt>
+        <dd>
+          <span>{{ rider.sum }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.rider.term">Term</span></dt>
+        <dd>
+          <span>{{ rider.term }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.rider.ppt">Ppt</span></dt>
+        <dd>
+          <span>{{ rider.ppt }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.rider.premium">Premium</span></dt>
+        <dd>
+          <span>{{ rider.premium }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.rider.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ rider.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.rider.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ rider.lastModifiedBy }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/rider', rider.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

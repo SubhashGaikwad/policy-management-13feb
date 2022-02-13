@@ -1,0 +1,316 @@
+<div>
+  <h2 id="page-heading" data-cy="PolicyHeading">
+    <span jhiTranslate="policyManagement13FebApp.policy.home.title">Policies</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="policyManagement13FebApp.policy.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-policy"
+        [routerLink]="['/policy/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="policyManagement13FebApp.policy.home.createLabel"> Create a new Policy </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="policies?.length === 0">
+    <span jhiTranslate="policyManagement13FebApp.policy.home.notFound">No policies found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="policies && policies.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="policyAmount">
+            <span jhiTranslate="policyManagement13FebApp.policy.policyAmount">Policy Amount</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="policyNumber">
+            <span jhiTranslate="policyManagement13FebApp.policy.policyNumber">Policy Number</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="term">
+            <span jhiTranslate="policyManagement13FebApp.policy.term">Term</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="ppt">
+            <span jhiTranslate="policyManagement13FebApp.policy.ppt">Ppt</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="commDate">
+            <span jhiTranslate="policyManagement13FebApp.policy.commDate">Comm Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="proposerName">
+            <span jhiTranslate="policyManagement13FebApp.policy.proposerName">Proposer Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sumAssuredAmount">
+            <span jhiTranslate="policyManagement13FebApp.policy.sumAssuredAmount">Sum Assured Amount</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="premiumMode">
+            <span jhiTranslate="policyManagement13FebApp.policy.premiumMode">Premium Mode</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="basicPremium">
+            <span jhiTranslate="policyManagement13FebApp.policy.basicPremium">Basic Premium</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="extraPremium">
+            <span jhiTranslate="policyManagement13FebApp.policy.extraPremium">Extra Premium</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="gst">
+            <span jhiTranslate="policyManagement13FebApp.policy.gst">Gst</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <span jhiTranslate="policyManagement13FebApp.policy.status">Status</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="totalPremiun">
+            <span jhiTranslate="policyManagement13FebApp.policy.totalPremiun">Total Premiun</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="gstFirstYear">
+            <span jhiTranslate="policyManagement13FebApp.policy.gstFirstYear">Gst First Year</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="netPremium">
+            <span jhiTranslate="policyManagement13FebApp.policy.netPremium">Net Premium</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="taxBeneficiary">
+            <span jhiTranslate="policyManagement13FebApp.policy.taxBeneficiary">Tax Beneficiary</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="policyReceived">
+            <span jhiTranslate="policyManagement13FebApp.policy.policyReceived">Policy Received</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="previousPolicy">
+            <span jhiTranslate="policyManagement13FebApp.policy.previousPolicy">Previous Policy</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="policyStartDate">
+            <span jhiTranslate="policyManagement13FebApp.policy.policyStartDate">Policy Start Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="policyEndDate">
+            <span jhiTranslate="policyManagement13FebApp.policy.policyEndDate">Policy End Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="period">
+            <span jhiTranslate="policyManagement13FebApp.policy.period">Period</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="claimDone">
+            <span jhiTranslate="policyManagement13FebApp.policy.claimDone">Claim Done</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeHeathCheckup">
+            <span jhiTranslate="policyManagement13FebApp.policy.freeHeathCheckup">Free Heath Checkup</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="zone">
+            <span jhiTranslate="policyManagement13FebApp.policy.zone">Zone</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="noOfYear">
+            <span jhiTranslate="policyManagement13FebApp.policy.noOfYear">No Of Year</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="floaterSum">
+            <span jhiTranslate="policyManagement13FebApp.policy.floaterSum">Floater Sum</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tpa">
+            <span jhiTranslate="policyManagement13FebApp.policy.tpa">Tpa</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="paymentDate">
+            <span jhiTranslate="policyManagement13FebApp.policy.paymentDate">Payment Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="policyType">
+            <span jhiTranslate="policyManagement13FebApp.policy.policyType">Policy Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="paToOwner">
+            <span jhiTranslate="policyManagement13FebApp.policy.paToOwner">Pa To Owner</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="paToOther">
+            <span jhiTranslate="policyManagement13FebApp.policy.paToOther">Pa To Other</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="loading">
+            <span jhiTranslate="policyManagement13FebApp.policy.loading">Loading</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="riskCoveredFrom">
+            <span jhiTranslate="policyManagement13FebApp.policy.riskCoveredFrom">Risk Covered From</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="riskCoveredTo">
+            <span jhiTranslate="policyManagement13FebApp.policy.riskCoveredTo">Risk Covered To</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="notes">
+            <span jhiTranslate="policyManagement13FebApp.policy.notes">Notes</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField1">
+            <span jhiTranslate="policyManagement13FebApp.policy.freeField1">Free Field 1</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField2">
+            <span jhiTranslate="policyManagement13FebApp.policy.freeField2">Free Field 2</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField3">
+            <span jhiTranslate="policyManagement13FebApp.policy.freeField3">Free Field 3</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField4">
+            <span jhiTranslate="policyManagement13FebApp.policy.freeField4">Free Field 4</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="freeField5">
+            <span jhiTranslate="policyManagement13FebApp.policy.freeField5">Free Field 5</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="maturityDate">
+            <span jhiTranslate="policyManagement13FebApp.policy.maturityDate">Maturity Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="uinNo">
+            <span jhiTranslate="policyManagement13FebApp.policy.uinNo">Uin No</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModified">
+            <span jhiTranslate="policyManagement13FebApp.policy.lastModified">Last Modified</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <span jhiTranslate="policyManagement13FebApp.policy.lastModifiedBy">Last Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="agency.id">
+            <span jhiTranslate="policyManagement13FebApp.policy.agency">Agency</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="company.id">
+            <span jhiTranslate="policyManagement13FebApp.policy.company">Company</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="product.id">
+            <span jhiTranslate="policyManagement13FebApp.policy.product">Product</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="premiunDetails.id">
+            <span jhiTranslate="policyManagement13FebApp.policy.premiunDetails">Premiun Details</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vehicleClass.id">
+            <span jhiTranslate="policyManagement13FebApp.policy.vehicleClass">Vehicle Class</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="bankDetails.id">
+            <span jhiTranslate="policyManagement13FebApp.policy.bankDetails">Bank Details</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="policyUsers.id">
+            <span jhiTranslate="policyManagement13FebApp.policy.policyUsers">Policy Users</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let policy of policies; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/policy', policy.id, 'view']">{{ policy.id }}</a>
+          </td>
+          <td>{{ policy.policyAmount }}</td>
+          <td>{{ policy.policyNumber }}</td>
+          <td>{{ policy.term }}</td>
+          <td>{{ policy.ppt }}</td>
+          <td>{{ policy.commDate }}</td>
+          <td>{{ policy.proposerName }}</td>
+          <td>{{ policy.sumAssuredAmount }}</td>
+          <td jhiTranslate="{{ 'policyManagement13FebApp.PremiumMode.' + policy.premiumMode }}">{{ policy.premiumMode }}</td>
+          <td>{{ policy.basicPremium }}</td>
+          <td>{{ policy.extraPremium }}</td>
+          <td>{{ policy.gst }}</td>
+          <td jhiTranslate="{{ 'policyManagement13FebApp.PolicyStatus.' + policy.status }}">{{ policy.status }}</td>
+          <td>{{ policy.totalPremiun }}</td>
+          <td>{{ policy.gstFirstYear }}</td>
+          <td>{{ policy.netPremium }}</td>
+          <td>{{ policy.taxBeneficiary }}</td>
+          <td>{{ policy.policyReceived }}</td>
+          <td>{{ policy.previousPolicy }}</td>
+          <td>{{ policy.policyStartDate }}</td>
+          <td>{{ policy.policyEndDate }}</td>
+          <td>{{ policy.period }}</td>
+          <td>{{ policy.claimDone }}</td>
+          <td>{{ policy.freeHeathCheckup }}</td>
+          <td jhiTranslate="{{ 'policyManagement13FebApp.Zone.' + policy.zone }}">{{ policy.zone }}</td>
+          <td>{{ policy.noOfYear }}</td>
+          <td>{{ policy.floaterSum }}</td>
+          <td>{{ policy.tpa }}</td>
+          <td>{{ policy.paymentDate }}</td>
+          <td jhiTranslate="{{ 'policyManagement13FebApp.PolicyType.' + policy.policyType }}">{{ policy.policyType }}</td>
+          <td>{{ policy.paToOwner }}</td>
+          <td>{{ policy.paToOther }}</td>
+          <td>{{ policy.loading }}</td>
+          <td>{{ policy.riskCoveredFrom }}</td>
+          <td>{{ policy.riskCoveredTo }}</td>
+          <td>{{ policy.notes }}</td>
+          <td>{{ policy.freeField1 }}</td>
+          <td>{{ policy.freeField2 }}</td>
+          <td>{{ policy.freeField3 }}</td>
+          <td>{{ policy.freeField4 }}</td>
+          <td>{{ policy.freeField5 }}</td>
+          <td>{{ policy.maturityDate }}</td>
+          <td>{{ policy.uinNo }}</td>
+          <td>{{ policy.lastModified }}</td>
+          <td>{{ policy.lastModifiedBy }}</td>
+          <td>
+            <div *ngIf="policy.agency">
+              <a [routerLink]="['/agency', policy.agency?.id, 'view']">{{ policy.agency?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="policy.company">
+              <a [routerLink]="['/company', policy.company?.id, 'view']">{{ policy.company?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="policy.product">
+              <a [routerLink]="['/product', policy.product?.id, 'view']">{{ policy.product?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="policy.premiunDetails">
+              <a [routerLink]="['/premiun-details', policy.premiunDetails?.id, 'view']">{{ policy.premiunDetails?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="policy.vehicleClass">
+              <a [routerLink]="['/vehicle-class', policy.vehicleClass?.id, 'view']">{{ policy.vehicleClass?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="policy.bankDetails">
+              <a [routerLink]="['/bank-details', policy.bankDetails?.id, 'view']">{{ policy.bankDetails?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="policy.policyUsers">
+              <a [routerLink]="['/policy-users', policy.policyUsers?.id, 'view']">{{ policy.policyUsers?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/policy', policy.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/policy', policy.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(policy)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="policies && policies.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

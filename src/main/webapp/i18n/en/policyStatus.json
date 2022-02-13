@@ -1,0 +1,13 @@
+{
+  "policyManagement13FebApp": {
+    "PolicyStatus": {
+      "null": "",
+      "OPEN": "Open",
+      "INFORCE": "inforce",
+      "CANCELLED": "Cancelled",
+      "CLOSED": "Closed",
+      "MATURED": "Matured",
+      "SUSPENDED": "Suspended"
+    }
+  }
+}

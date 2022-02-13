@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="company">
+      <h2 data-cy="companyDetailsHeading"><span jhiTranslate="policyManagement13FebApp.company.detail.title">Company</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ company.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.company.name">Name</span></dt>
+        <dd>
+          <span>{{ company.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.company.address">Address</span></dt>
+        <dd>
+          <span>{{ company.address }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.company.branch">Branch</span></dt>
+        <dd>
+          <span>{{ company.branch }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.company.brnachCode">Brnach Code</span></dt>
+        <dd>
+          <span>{{ company.brnachCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.company.email">Email</span></dt>
+        <dd>
+          <span>{{ company.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.company.imageUrl">Image Url</span></dt>
+        <dd>
+          <span>{{ company.imageUrl }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.company.contactNo">Contact No</span></dt>
+        <dd>
+          <span>{{ company.contactNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.company.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ company.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.company.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ company.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.company.companyType">Company Type</span></dt>
+        <dd>
+          <div *ngIf="company.companyType">
+            <a [routerLink]="['/company-type', company.companyType?.id, 'view']">{{ company.companyType?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/company', company.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

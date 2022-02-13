@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="productDetails">
+      <h2 data-cy="productDetailsDetailsHeading">
+        <span jhiTranslate="policyManagement13FebApp.productDetails.detail.title">Product Details</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ productDetails.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.productDetails.details">Details</span></dt>
+        <dd>
+          <span>{{ productDetails.details }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.productDetails.featurs">Featurs</span></dt>
+        <dd>
+          <span>{{ productDetails.featurs }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.productDetails.activationDate">Activation Date</span></dt>
+        <dd>
+          <span>{{ productDetails.activationDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.productDetails.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ productDetails.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.productDetails.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ productDetails.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.productDetails.productType">Product Type</span></dt>
+        <dd>
+          <div *ngIf="productDetails.productType">
+            <a [routerLink]="['/product-type', productDetails.productType?.id, 'view']">{{ productDetails.productType?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/product-details', productDetails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

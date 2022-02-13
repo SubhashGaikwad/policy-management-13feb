@@ -1,0 +1,37 @@
+{
+  "policyManagement13FebApp": {
+    "premiunDetails": {
+      "home": {
+        "title": "Premiun Details",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Premiun Details",
+        "createOrEditLabel": "Create or edit a Premiun Details",
+        "notFound": "No Premiun Details found"
+      },
+      "created": "A new Premiun Details is created with identifier {{ param }}",
+      "updated": "A Premiun Details is updated with identifier {{ param }}",
+      "deleted": "A Premiun Details is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Premiun Details {{ id }}?"
+      },
+      "detail": {
+        "title": "Premiun Details"
+      },
+      "id": "ID",
+      "premium": "Premium",
+      "otherLoading": "Other Loading",
+      "otherDiscount": "Other Discount",
+      "addOnPremium": "Add On Premium",
+      "liabilityPremium": "Liability Premium",
+      "odPremium": "Od Premium",
+      "personalAccidentDiscount": "Personal Accident Discount",
+      "personalAccident": "Personal Accident",
+      "grossPremium": "Gross Premium",
+      "gst": "Gst",
+      "netPremium": "Net Premium",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "policy": "Policy"
+    }
+  }
+}

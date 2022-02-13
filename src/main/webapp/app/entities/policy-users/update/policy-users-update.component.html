@@ -1,0 +1,346 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-policy-users-heading"
+        data-cy="PolicyUsersCreateUpdateHeading"
+        jhiTranslate="policyManagement13FebApp.policyUsers.home.createOrEditLabel"
+      >
+        Create or edit a Policy Users
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.groupCode" for="field_groupCode"
+            >Group Code</label
+          >
+          <input type="text" class="form-control" name="groupCode" id="field_groupCode" data-cy="groupCode" formControlName="groupCode" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.groupHeadName" for="field_groupHeadName"
+            >Group Head Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="groupHeadName"
+            id="field_groupHeadName"
+            data-cy="groupHeadName"
+            formControlName="groupHeadName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.firstName" for="field_firstName"
+            >First Name</label
+          >
+          <input type="text" class="form-control" name="firstName" id="field_firstName" data-cy="firstName" formControlName="firstName" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.lastName" for="field_lastName"
+            >Last Name</label
+          >
+          <input type="text" class="form-control" name="lastName" id="field_lastName" data-cy="lastName" formControlName="lastName" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.birthDate" for="field_birthDate"
+            >Birth Date</label
+          >
+          <input type="text" class="form-control" name="birthDate" id="field_birthDate" data-cy="birthDate" formControlName="birthDate" />
+          <div *ngIf="editForm.get('birthDate')!.invalid && (editForm.get('birthDate')!.dirty || editForm.get('birthDate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('birthDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.marriageDate" for="field_marriageDate"
+            >Marriage Date</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="marriageDate"
+            id="field_marriageDate"
+            data-cy="marriageDate"
+            formControlName="marriageDate"
+          />
+          <div
+            *ngIf="editForm.get('marriageDate')!.invalid && (editForm.get('marriageDate')!.dirty || editForm.get('marriageDate')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('marriageDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.userTypeId" for="field_userTypeId"
+            >User Type Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="userTypeId"
+            id="field_userTypeId"
+            data-cy="userTypeId"
+            formControlName="userTypeId"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.username" for="field_username"
+            >Username</label
+          >
+          <input type="text" class="form-control" name="username" id="field_username" data-cy="username" formControlName="username" />
+          <div *ngIf="editForm.get('username')!.invalid && (editForm.get('username')!.dirty || editForm.get('username')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('username')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.password" for="field_password"
+            >Password</label
+          >
+          <input type="text" class="form-control" name="password" id="field_password" data-cy="password" formControlName="password" />
+          <div *ngIf="editForm.get('password')!.invalid && (editForm.get('password')!.dirty || editForm.get('password')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('password')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.imageUrl" for="field_imageUrl"
+            >Image Url</label
+          >
+          <input type="text" class="form-control" name="imageUrl" id="field_imageUrl" data-cy="imageUrl" formControlName="imageUrl" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'policyManagement13FebApp.StatusInd.null' | translate }}</option>
+            <option *ngFor="let statusInd of statusIndValues" [value]="statusInd">
+              {{ 'policyManagement13FebApp.StatusInd.' + statusInd | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.activated" for="field_activated"
+            >Activated</label
+          >
+          <input type="checkbox" class="form-check" name="activated" id="field_activated" data-cy="activated" formControlName="activated" />
+          <div *ngIf="editForm.get('activated')!.invalid && (editForm.get('activated')!.dirty || editForm.get('activated')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('activated')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="policyManagement13FebApp.policyUsers.licenceExpiryDate"
+            for="field_licenceExpiryDate"
+            >Licence Expiry Date</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="licenceExpiryDate"
+            id="field_licenceExpiryDate"
+            data-cy="licenceExpiryDate"
+            formControlName="licenceExpiryDate"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.mobileNo" for="field_mobileNo"
+            >Mobile No</label
+          >
+          <input type="text" class="form-control" name="mobileNo" id="field_mobileNo" data-cy="mobileNo" formControlName="mobileNo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.aadharCardNuber" for="field_aadharCardNuber"
+            >Aadhar Card Nuber</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="aadharCardNuber"
+            id="field_aadharCardNuber"
+            data-cy="aadharCardNuber"
+            formControlName="aadharCardNuber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.pancardNumber" for="field_pancardNumber"
+            >Pancard Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="pancardNumber"
+            id="field_pancardNumber"
+            data-cy="pancardNumber"
+            formControlName="pancardNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.oneTimePassword" for="field_oneTimePassword"
+            >One Time Password</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="oneTimePassword"
+            id="field_oneTimePassword"
+            data-cy="oneTimePassword"
+            formControlName="oneTimePassword"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.otpExpiryTime" for="field_otpExpiryTime"
+            >Otp Expiry Time</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="otpExpiryTime"
+            id="field_otpExpiryTime"
+            data-cy="otpExpiryTime"
+            formControlName="otpExpiryTime"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.lastModified" for="field_lastModified"
+            >Last Modified</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModified"
+            id="field_lastModified"
+            data-cy="lastModified"
+            formControlName="lastModified"
+          />
+          <div
+            *ngIf="editForm.get('lastModified')!.invalid && (editForm.get('lastModified')!.dirty || editForm.get('lastModified')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModified')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.lastModifiedBy" for="field_lastModifiedBy"
+            >Last Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastModifiedBy')!.invalid && (editForm.get('lastModifiedBy')!.dirty || editForm.get('lastModifiedBy')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModifiedBy')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policyUsers.usersType" for="field_usersType"
+            >Users Type</label
+          >
+          <select class="form-control" id="field_usersType" data-cy="usersType" name="usersType" formControlName="usersType">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="usersTypeOption.id === editForm.get('usersType')!.value?.id ? editForm.get('usersType')!.value : usersTypeOption"
+              *ngFor="let usersTypeOption of usersTypesCollection; trackBy: trackUsersTypeById"
+            >
+              {{ usersTypeOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

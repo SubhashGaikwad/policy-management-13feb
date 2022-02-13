@@ -1,0 +1,230 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-premiun-details-heading"
+        data-cy="PremiunDetailsCreateUpdateHeading"
+        jhiTranslate="policyManagement13FebApp.premiunDetails.home.createOrEditLabel"
+      >
+        Create or edit a Premiun Details
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.premiunDetails.premium" for="field_premium"
+            >Premium</label
+          >
+          <input type="number" class="form-control" name="premium" id="field_premium" data-cy="premium" formControlName="premium" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.premiunDetails.otherLoading" for="field_otherLoading"
+            >Other Loading</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="otherLoading"
+            id="field_otherLoading"
+            data-cy="otherLoading"
+            formControlName="otherLoading"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.premiunDetails.otherDiscount" for="field_otherDiscount"
+            >Other Discount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="otherDiscount"
+            id="field_otherDiscount"
+            data-cy="otherDiscount"
+            formControlName="otherDiscount"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.premiunDetails.addOnPremium" for="field_addOnPremium"
+            >Add On Premium</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="addOnPremium"
+            id="field_addOnPremium"
+            data-cy="addOnPremium"
+            formControlName="addOnPremium"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="policyManagement13FebApp.premiunDetails.liabilityPremium"
+            for="field_liabilityPremium"
+            >Liability Premium</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="liabilityPremium"
+            id="field_liabilityPremium"
+            data-cy="liabilityPremium"
+            formControlName="liabilityPremium"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.premiunDetails.odPremium" for="field_odPremium"
+            >Od Premium</label
+          >
+          <input type="number" class="form-control" name="odPremium" id="field_odPremium" data-cy="odPremium" formControlName="odPremium" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="policyManagement13FebApp.premiunDetails.personalAccidentDiscount"
+            for="field_personalAccidentDiscount"
+            >Personal Accident Discount</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="personalAccidentDiscount"
+            id="field_personalAccidentDiscount"
+            data-cy="personalAccidentDiscount"
+            formControlName="personalAccidentDiscount"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="policyManagement13FebApp.premiunDetails.personalAccident"
+            for="field_personalAccident"
+            >Personal Accident</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="personalAccident"
+            id="field_personalAccident"
+            data-cy="personalAccident"
+            formControlName="personalAccident"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.premiunDetails.grossPremium" for="field_grossPremium"
+            >Gross Premium</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="grossPremium"
+            id="field_grossPremium"
+            data-cy="grossPremium"
+            formControlName="grossPremium"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.premiunDetails.gst" for="field_gst">Gst</label>
+          <input type="number" class="form-control" name="gst" id="field_gst" data-cy="gst" formControlName="gst" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.premiunDetails.netPremium" for="field_netPremium"
+            >Net Premium</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="netPremium"
+            id="field_netPremium"
+            data-cy="netPremium"
+            formControlName="netPremium"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.premiunDetails.lastModified" for="field_lastModified"
+            >Last Modified</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModified"
+            id="field_lastModified"
+            data-cy="lastModified"
+            formControlName="lastModified"
+          />
+          <div
+            *ngIf="editForm.get('lastModified')!.invalid && (editForm.get('lastModified')!.dirty || editForm.get('lastModified')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModified')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.premiunDetails.lastModifiedBy" for="field_lastModifiedBy"
+            >Last Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastModifiedBy')!.invalid && (editForm.get('lastModifiedBy')!.dirty || editForm.get('lastModifiedBy')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModifiedBy')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

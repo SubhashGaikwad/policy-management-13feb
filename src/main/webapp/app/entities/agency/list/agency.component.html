@@ -1,0 +1,124 @@
+<div>
+  <h2 id="page-heading" data-cy="AgencyHeading">
+    <span jhiTranslate="policyManagement13FebApp.agency.home.title">Agencies</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="policyManagement13FebApp.agency.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-agency"
+        [routerLink]="['/agency/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="policyManagement13FebApp.agency.home.createLabel"> Create a new Agency </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="agencies?.length === 0">
+    <span jhiTranslate="policyManagement13FebApp.agency.home.notFound">No agencies found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="agencies && agencies.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name">
+            <span jhiTranslate="policyManagement13FebApp.agency.name">Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="address">
+            <span jhiTranslate="policyManagement13FebApp.agency.address">Address</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="branch">
+            <span jhiTranslate="policyManagement13FebApp.agency.branch">Branch</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="brnachCode">
+            <span jhiTranslate="policyManagement13FebApp.agency.brnachCode">Brnach Code</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="email">
+            <span jhiTranslate="policyManagement13FebApp.agency.email">Email</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="companyTypeId">
+            <span jhiTranslate="policyManagement13FebApp.agency.companyTypeId">Company Type Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="imageUrl">
+            <span jhiTranslate="policyManagement13FebApp.agency.imageUrl">Image Url</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="contactNo">
+            <span jhiTranslate="policyManagement13FebApp.agency.contactNo">Contact No</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModified">
+            <span jhiTranslate="policyManagement13FebApp.agency.lastModified">Last Modified</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <span jhiTranslate="policyManagement13FebApp.agency.lastModifiedBy">Last Modified By</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let agency of agencies; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/agency', agency.id, 'view']">{{ agency.id }}</a>
+          </td>
+          <td>{{ agency.name }}</td>
+          <td>{{ agency.address }}</td>
+          <td>{{ agency.branch }}</td>
+          <td>{{ agency.brnachCode }}</td>
+          <td>{{ agency.email }}</td>
+          <td>{{ agency.companyTypeId }}</td>
+          <td>{{ agency.imageUrl }}</td>
+          <td>{{ agency.contactNo }}</td>
+          <td>{{ agency.lastModified }}</td>
+          <td>{{ agency.lastModifiedBy }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/agency', agency.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/agency', agency.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(agency)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="agencies && agencies.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>
