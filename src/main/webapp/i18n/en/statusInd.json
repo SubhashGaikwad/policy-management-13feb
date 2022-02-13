@@ -1,0 +1,10 @@
+{
+  "policyManagement13FebApp": {
+    "StatusInd": {
+      "null": "",
+      "A": "Active",
+      "I": "Inactive",
+      "D": "Deleted"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "policyManagement13FebApp": {
+    "policyUsers": {
+      "home": {
+        "title": "Policy Users",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Policy Users",
+        "createOrEditLabel": "Create or edit a Policy Users",
+        "notFound": "No Policy Users found"
+      },
+      "created": "A new Policy Users is created with identifier {{ param }}",
+      "updated": "A Policy Users is updated with identifier {{ param }}",
+      "deleted": "A Policy Users is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Policy Users {{ id }}?"
+      },
+      "detail": {
+        "title": "Policy Users"
+      },
+      "id": "ID",
+      "groupCode": "Group Code",
+      "groupHeadName": "Group Head Name",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "birthDate": "Birth Date",
+      "marriageDate": "Marriage Date",
+      "userTypeId": "User Type Id",
+      "username": "Username",
+      "password": "Password",
+      "email": "Email",
+      "imageUrl": "Image Url",
+      "status": "Status",
+      "activated": "Activated",
+      "licenceExpiryDate": "Licence Expiry Date",
+      "mobileNo": "Mobile No",
+      "aadharCardNuber": "Aadhar Card Nuber",
+      "pancardNumber": "Pancard Number",
+      "oneTimePassword": "One Time Password",
+      "otpExpiryTime": "Otp Expiry Time",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "usersType": "Users Type",
+      "policy": "Policy",
+      "address": "Address"
+    }
+  }
+}

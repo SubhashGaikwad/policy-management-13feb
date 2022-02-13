@@ -1,0 +1,373 @@
+entity Policy {
+    policyAmount Long
+    policyNumber String
+    term Long
+    ppt Long
+    commDate String required
+    proposerName String
+    sumAssuredAmount Long
+    premiumMode PremiumMode
+    basicPremium Long
+    extraPremium Long
+    gst String
+    status PolicyStatus
+    totalPremiun String
+    gstFirstYear String
+    netPremium String
+    taxBeneficiary String
+    policyReceived Boolean
+    previousPolicy Long
+    policyStartDate String
+    policyEndDate String
+    period String
+    claimDone Boolean
+    freeHeathCheckup Boolean
+    zone Zone
+    noOfYear Long
+    floaterSum String
+    tpa String
+    paymentDate String
+    policyType PolicyType
+    paToOwner String
+    paToOther String
+    loading Long
+    riskCoveredFrom String
+    riskCoveredTo String
+    notes String
+    freeField1 String
+    freeField2 String 
+    freeField3 String
+    freeField4 String
+    freeField5 String
+    maturityDate String required
+    uinNo String
+	lastModified String required
+	lastModifiedBy String required
+}
+
+entity PremiunDetails {
+    premium Long
+    otherLoading Long
+    otherDiscount Long
+    addOnPremium Long
+    liabilityPremium Long
+    odPremium Long
+    personalAccidentDiscount Boolean
+    personalAccident Long
+    grossPremium Long
+    gst Long
+    netPremium Long
+	lastModified String required
+	lastModifiedBy String required
+}
+
+entity Member {
+    name Long
+    age Long
+    relation String
+    contactNo Long
+	lastModified String required
+	lastModifiedBy String required
+}
+
+entity VehicleClass {
+    name Long
+	lastModified String required
+	lastModifiedBy String required
+}
+
+entity VehicleDetails {
+    name Long
+    invoiceValue String
+    idv String
+    enginNumber String
+    chassisNumber String
+    registrationNumber String
+    seatingCapacity Long
+    zone Zone
+    yearOfManufacturing String
+    registrationDate String
+	lastModified String required
+	lastModifiedBy String required
+}
+
+entity ParameterLookup {
+    name Long
+    type ParameterType
+	lastModified String required
+	lastModifiedBy String required
+}
+
+enum ParameterType {
+    MAKE(Make),
+    MODEL(Model),
+    VARIENT(Varient),
+    CC(CubicCapacity),
+    VEHICAL(VehicalType),
+    HEATH(HeathInsurance),
+    MOTAR(MotarInsurance)
+    
+}
+
+
+
+entity Nominee {
+    name Long
+    relation String
+    nomineePercentage Long
+    contactNo Long
+	lastModified String required
+	lastModifiedBy String required
+}
+
+entity BankDetails {
+    name String
+    branch String
+    branchCode String
+    city Long
+    contactNo Long
+    ifcCode String
+    account String
+    accountType String
+	lastModified String required
+	lastModifiedBy String required
+}
+
+enum Zone {
+    A("A"),
+    B("B"),
+    C("C")
+    
+}
+
+enum PolicyType {
+    LIFE(Life),
+    HEATH(Health),
+    MOTAR(Motar),
+    OTHER(Other)
+   
+}
+
+
+enum PremiumMode {
+    YEARLY(Yearly),
+    HLY(Halfyear),
+    QLY(Qly),
+    MONTHLY(Monthly),
+    SSS(sss),
+    SINGLE(Single)
+}
+
+enum PolicyStatus {
+    OPEN(Open),
+    INFORCE(inforce),
+    CANCELLED(Cancelled),
+    CLOSED(Closed),
+    MATURED(Matured),
+    SUSPENDED(Suspended)
+}
+
+entity Product {
+    name String
+    planNo Long
+    uinNo String
+	lastModified String required
+	lastModifiedBy String required
+}
+
+entity ProductDetails {
+    details String
+    featurs String
+    activationDate String required
+	lastModified String required
+	lastModifiedBy String required
+}
+
+entity ProductType {
+    name String
+    lastModified String required
+	lastModifiedBy String required
+}
+
+entity Company {
+    name String
+    address String
+    branch String
+    brnachCode String
+    email String unique
+    imageUrl String
+   	contactNo String
+	lastModified String required
+	lastModifiedBy String required
+}
+
+
+
+entity CompanyType {
+    name String//Insurance ,
+    lastModified String required
+	lastModifiedBy String required
+}
+
+entity Agency {
+    name String
+    address String
+    branch String
+    brnachCode String
+    email String unique
+    companyTypeId Long
+    imageUrl String
+   	contactNo String
+	lastModified String required
+	lastModifiedBy String required
+}
+
+entity Rider {
+    name String
+    commDate String
+    sum String
+    term String
+    ppt String unique
+    premium Long
+	lastModified String required
+	lastModifiedBy String required
+}
+entity PolicyUsers {
+    groupCode String
+    groupHeadName String
+    firstName String
+    lastName String
+    birthDate String required
+    marriageDate String required
+    userTypeId Long
+    username String required unique
+    password String required
+	email String unique
+    imageUrl String
+    status StatusInd
+    activated Boolean required
+    licenceExpiryDate String
+   	mobileNo String
+    aadharCardNuber String
+    pancardNumber String
+	oneTimePassword String
+	otpExpiryTime String
+    lastModified String required
+	lastModifiedBy String required
+}
+
+entity Address {
+    area String
+    landmark String
+    taluka String
+    district String
+    state String
+    pincode Long
+    lastModified String required
+	lastModifiedBy String required
+}
+
+entity UsersType {
+    name String
+    lastModified String required
+	lastModifiedBy String required
+}
+
+entity SecurityUser {
+    firstName String
+    lastName String
+    designation String
+    login String required unique
+    passwordHash String required
+	email String unique
+    imageUrl String
+    activated Boolean required
+    langKey String
+    activationKey String
+    resetKey String
+    resetDate String
+	mobileNo String
+	oneTimePassword String
+	otpExpiryTime String
+    lastModified String required
+	lastModifiedBy String required
+}
+
+entity UserAccess {
+    level AccessLevel
+    accessId Long
+    lastModified String required
+	lastModifiedBy String required
+}
+
+enum AccessLevel {
+    ADMIN(Admin),
+	AGENT (Agent),
+    CUSTOMER(Customer) 
+}
+
+enum StatusInd {
+    A(Active),
+    I(Inactive),
+    D(Deleted)
+}
+entity SecurityRole {
+	name String required unique
+	description String
+    lastModified String required
+	lastModifiedBy String required
+}
+
+entity SecurityPermission {
+	name String required unique
+	description String
+    lastModified String required
+	lastModifiedBy String required
+}
+
+relationship ManyToOne {     
+    UserAccess{securityUser(login)} to SecurityUser   
+}
+relationship OneToMany {
+	Policy to Nominee
+    VehicleDetails to ParameterLookup
+    Policy to Member
+    Company to Product
+    PolicyUsers to Policy
+    PolicyUsers to Address
+    Company to Address
+}
+
+relationship ManyToMany {
+  SecurityRole{securityPermission(name)} to SecurityPermission{securityRole(name)},
+  SecurityUser{securityPermission(name)} to SecurityPermission{securityUser(login)},
+  SecurityUser{securityRole(name)} to SecurityRole{securityUser(login)}
+ 
+}
+
+relationship OneToOne {
+    Product to ProductDetails
+    Policy to Agency
+    Policy to Company
+    Policy to Product
+    Policy to PremiunDetails
+    Policy to VehicleClass
+    PolicyUsers to UsersType
+    Company to CompanyType
+    Policy to BankDetails
+    ProductDetails to ProductType
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+paginate * with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service * with serviceClass
+
+filter *
+// Set an angular suffix
+// angularSuffix * with tvg

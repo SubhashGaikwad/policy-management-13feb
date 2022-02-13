@@ -1,0 +1,51 @@
+{
+  "applications": "*",
+  "changelogDate": "20220213105346",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "rider",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "commDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sum",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "term",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppt",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "premium",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Rider",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

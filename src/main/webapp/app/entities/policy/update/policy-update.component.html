@@ -1,0 +1,684 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-policy-heading" data-cy="PolicyCreateUpdateHeading" jhiTranslate="policyManagement13FebApp.policy.home.createOrEditLabel">
+        Create or edit a Policy
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.policyAmount" for="field_policyAmount"
+            >Policy Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="policyAmount"
+            id="field_policyAmount"
+            data-cy="policyAmount"
+            formControlName="policyAmount"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.policyNumber" for="field_policyNumber"
+            >Policy Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="policyNumber"
+            id="field_policyNumber"
+            data-cy="policyNumber"
+            formControlName="policyNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.term" for="field_term">Term</label>
+          <input type="number" class="form-control" name="term" id="field_term" data-cy="term" formControlName="term" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.ppt" for="field_ppt">Ppt</label>
+          <input type="number" class="form-control" name="ppt" id="field_ppt" data-cy="ppt" formControlName="ppt" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.commDate" for="field_commDate">Comm Date</label>
+          <input type="text" class="form-control" name="commDate" id="field_commDate" data-cy="commDate" formControlName="commDate" />
+          <div *ngIf="editForm.get('commDate')!.invalid && (editForm.get('commDate')!.dirty || editForm.get('commDate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('commDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.proposerName" for="field_proposerName"
+            >Proposer Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="proposerName"
+            id="field_proposerName"
+            data-cy="proposerName"
+            formControlName="proposerName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.sumAssuredAmount" for="field_sumAssuredAmount"
+            >Sum Assured Amount</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="sumAssuredAmount"
+            id="field_sumAssuredAmount"
+            data-cy="sumAssuredAmount"
+            formControlName="sumAssuredAmount"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.premiumMode" for="field_premiumMode"
+            >Premium Mode</label
+          >
+          <select class="form-control" name="premiumMode" formControlName="premiumMode" id="field_premiumMode" data-cy="premiumMode">
+            <option [ngValue]="null">{{ 'policyManagement13FebApp.PremiumMode.null' | translate }}</option>
+            <option *ngFor="let premiumMode of premiumModeValues" [value]="premiumMode">
+              {{ 'policyManagement13FebApp.PremiumMode.' + premiumMode | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.basicPremium" for="field_basicPremium"
+            >Basic Premium</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="basicPremium"
+            id="field_basicPremium"
+            data-cy="basicPremium"
+            formControlName="basicPremium"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.extraPremium" for="field_extraPremium"
+            >Extra Premium</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="extraPremium"
+            id="field_extraPremium"
+            data-cy="extraPremium"
+            formControlName="extraPremium"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.gst" for="field_gst">Gst</label>
+          <input type="text" class="form-control" name="gst" id="field_gst" data-cy="gst" formControlName="gst" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'policyManagement13FebApp.PolicyStatus.null' | translate }}</option>
+            <option *ngFor="let policyStatus of policyStatusValues" [value]="policyStatus">
+              {{ 'policyManagement13FebApp.PolicyStatus.' + policyStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.totalPremiun" for="field_totalPremiun"
+            >Total Premiun</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="totalPremiun"
+            id="field_totalPremiun"
+            data-cy="totalPremiun"
+            formControlName="totalPremiun"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.gstFirstYear" for="field_gstFirstYear"
+            >Gst First Year</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="gstFirstYear"
+            id="field_gstFirstYear"
+            data-cy="gstFirstYear"
+            formControlName="gstFirstYear"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.netPremium" for="field_netPremium"
+            >Net Premium</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="netPremium"
+            id="field_netPremium"
+            data-cy="netPremium"
+            formControlName="netPremium"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.taxBeneficiary" for="field_taxBeneficiary"
+            >Tax Beneficiary</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="taxBeneficiary"
+            id="field_taxBeneficiary"
+            data-cy="taxBeneficiary"
+            formControlName="taxBeneficiary"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.policyReceived" for="field_policyReceived"
+            >Policy Received</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="policyReceived"
+            id="field_policyReceived"
+            data-cy="policyReceived"
+            formControlName="policyReceived"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.previousPolicy" for="field_previousPolicy"
+            >Previous Policy</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="previousPolicy"
+            id="field_previousPolicy"
+            data-cy="previousPolicy"
+            formControlName="previousPolicy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.policyStartDate" for="field_policyStartDate"
+            >Policy Start Date</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="policyStartDate"
+            id="field_policyStartDate"
+            data-cy="policyStartDate"
+            formControlName="policyStartDate"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.policyEndDate" for="field_policyEndDate"
+            >Policy End Date</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="policyEndDate"
+            id="field_policyEndDate"
+            data-cy="policyEndDate"
+            formControlName="policyEndDate"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.period" for="field_period">Period</label>
+          <input type="text" class="form-control" name="period" id="field_period" data-cy="period" formControlName="period" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.claimDone" for="field_claimDone"
+            >Claim Done</label
+          >
+          <input type="checkbox" class="form-check" name="claimDone" id="field_claimDone" data-cy="claimDone" formControlName="claimDone" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.freeHeathCheckup" for="field_freeHeathCheckup"
+            >Free Heath Checkup</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="freeHeathCheckup"
+            id="field_freeHeathCheckup"
+            data-cy="freeHeathCheckup"
+            formControlName="freeHeathCheckup"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.zone" for="field_zone">Zone</label>
+          <select class="form-control" name="zone" formControlName="zone" id="field_zone" data-cy="zone">
+            <option [ngValue]="null">{{ 'policyManagement13FebApp.Zone.null' | translate }}</option>
+            <option *ngFor="let zone of zoneValues" [value]="zone">{{ 'policyManagement13FebApp.Zone.' + zone | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.noOfYear" for="field_noOfYear">No Of Year</label>
+          <input type="number" class="form-control" name="noOfYear" id="field_noOfYear" data-cy="noOfYear" formControlName="noOfYear" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.floaterSum" for="field_floaterSum"
+            >Floater Sum</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="floaterSum"
+            id="field_floaterSum"
+            data-cy="floaterSum"
+            formControlName="floaterSum"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.tpa" for="field_tpa">Tpa</label>
+          <input type="text" class="form-control" name="tpa" id="field_tpa" data-cy="tpa" formControlName="tpa" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.paymentDate" for="field_paymentDate"
+            >Payment Date</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="paymentDate"
+            id="field_paymentDate"
+            data-cy="paymentDate"
+            formControlName="paymentDate"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.policyType" for="field_policyType"
+            >Policy Type</label
+          >
+          <select class="form-control" name="policyType" formControlName="policyType" id="field_policyType" data-cy="policyType">
+            <option [ngValue]="null">{{ 'policyManagement13FebApp.PolicyType.null' | translate }}</option>
+            <option *ngFor="let policyType of policyTypeValues" [value]="policyType">
+              {{ 'policyManagement13FebApp.PolicyType.' + policyType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.paToOwner" for="field_paToOwner"
+            >Pa To Owner</label
+          >
+          <input type="text" class="form-control" name="paToOwner" id="field_paToOwner" data-cy="paToOwner" formControlName="paToOwner" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.paToOther" for="field_paToOther"
+            >Pa To Other</label
+          >
+          <input type="text" class="form-control" name="paToOther" id="field_paToOther" data-cy="paToOther" formControlName="paToOther" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.loading" for="field_loading">Loading</label>
+          <input type="number" class="form-control" name="loading" id="field_loading" data-cy="loading" formControlName="loading" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.riskCoveredFrom" for="field_riskCoveredFrom"
+            >Risk Covered From</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="riskCoveredFrom"
+            id="field_riskCoveredFrom"
+            data-cy="riskCoveredFrom"
+            formControlName="riskCoveredFrom"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.riskCoveredTo" for="field_riskCoveredTo"
+            >Risk Covered To</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="riskCoveredTo"
+            id="field_riskCoveredTo"
+            data-cy="riskCoveredTo"
+            formControlName="riskCoveredTo"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.notes" for="field_notes">Notes</label>
+          <input type="text" class="form-control" name="notes" id="field_notes" data-cy="notes" formControlName="notes" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.freeField1" for="field_freeField1"
+            >Free Field 1</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="freeField1"
+            id="field_freeField1"
+            data-cy="freeField1"
+            formControlName="freeField1"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.freeField2" for="field_freeField2"
+            >Free Field 2</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="freeField2"
+            id="field_freeField2"
+            data-cy="freeField2"
+            formControlName="freeField2"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.freeField3" for="field_freeField3"
+            >Free Field 3</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="freeField3"
+            id="field_freeField3"
+            data-cy="freeField3"
+            formControlName="freeField3"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.freeField4" for="field_freeField4"
+            >Free Field 4</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="freeField4"
+            id="field_freeField4"
+            data-cy="freeField4"
+            formControlName="freeField4"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.freeField5" for="field_freeField5"
+            >Free Field 5</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="freeField5"
+            id="field_freeField5"
+            data-cy="freeField5"
+            formControlName="freeField5"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.maturityDate" for="field_maturityDate"
+            >Maturity Date</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="maturityDate"
+            id="field_maturityDate"
+            data-cy="maturityDate"
+            formControlName="maturityDate"
+          />
+          <div
+            *ngIf="editForm.get('maturityDate')!.invalid && (editForm.get('maturityDate')!.dirty || editForm.get('maturityDate')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('maturityDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.uinNo" for="field_uinNo">Uin No</label>
+          <input type="text" class="form-control" name="uinNo" id="field_uinNo" data-cy="uinNo" formControlName="uinNo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.lastModified" for="field_lastModified"
+            >Last Modified</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModified"
+            id="field_lastModified"
+            data-cy="lastModified"
+            formControlName="lastModified"
+          />
+          <div
+            *ngIf="editForm.get('lastModified')!.invalid && (editForm.get('lastModified')!.dirty || editForm.get('lastModified')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModified')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.lastModifiedBy" for="field_lastModifiedBy"
+            >Last Modified By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastModifiedBy"
+            id="field_lastModifiedBy"
+            data-cy="lastModifiedBy"
+            formControlName="lastModifiedBy"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastModifiedBy')!.invalid && (editForm.get('lastModifiedBy')!.dirty || editForm.get('lastModifiedBy')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastModifiedBy')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.agency" for="field_agency">Agency</label>
+          <select class="form-control" id="field_agency" data-cy="agency" name="agency" formControlName="agency">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="agencyOption.id === editForm.get('agency')!.value?.id ? editForm.get('agency')!.value : agencyOption"
+              *ngFor="let agencyOption of agenciesCollection; trackBy: trackAgencyById"
+            >
+              {{ agencyOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.company" for="field_company">Company</label>
+          <select class="form-control" id="field_company" data-cy="company" name="company" formControlName="company">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="companyOption.id === editForm.get('company')!.value?.id ? editForm.get('company')!.value : companyOption"
+              *ngFor="let companyOption of companiesCollection; trackBy: trackCompanyById"
+            >
+              {{ companyOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.product" for="field_product">Product</label>
+          <select class="form-control" id="field_product" data-cy="product" name="product" formControlName="product">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="productOption.id === editForm.get('product')!.value?.id ? editForm.get('product')!.value : productOption"
+              *ngFor="let productOption of productsCollection; trackBy: trackProductById"
+            >
+              {{ productOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.premiunDetails" for="field_premiunDetails"
+            >Premiun Details</label
+          >
+          <select
+            class="form-control"
+            id="field_premiunDetails"
+            data-cy="premiunDetails"
+            name="premiunDetails"
+            formControlName="premiunDetails"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                premiunDetailsOption.id === editForm.get('premiunDetails')!.value?.id
+                  ? editForm.get('premiunDetails')!.value
+                  : premiunDetailsOption
+              "
+              *ngFor="let premiunDetailsOption of premiunDetailsCollection; trackBy: trackPremiunDetailsById"
+            >
+              {{ premiunDetailsOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.vehicleClass" for="field_vehicleClass"
+            >Vehicle Class</label
+          >
+          <select class="form-control" id="field_vehicleClass" data-cy="vehicleClass" name="vehicleClass" formControlName="vehicleClass">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                vehicleClassOption.id === editForm.get('vehicleClass')!.value?.id ? editForm.get('vehicleClass')!.value : vehicleClassOption
+              "
+              *ngFor="let vehicleClassOption of vehicleClassesCollection; trackBy: trackVehicleClassById"
+            >
+              {{ vehicleClassOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.bankDetails" for="field_bankDetails"
+            >Bank Details</label
+          >
+          <select class="form-control" id="field_bankDetails" data-cy="bankDetails" name="bankDetails" formControlName="bankDetails">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                bankDetailsOption.id === editForm.get('bankDetails')!.value?.id ? editForm.get('bankDetails')!.value : bankDetailsOption
+              "
+              *ngFor="let bankDetailsOption of bankDetailsCollection; trackBy: trackBankDetailsById"
+            >
+              {{ bankDetailsOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="policyManagement13FebApp.policy.policyUsers" for="field_policyUsers"
+            >Policy Users</label
+          >
+          <select class="form-control" id="field_policyUsers" data-cy="policyUsers" name="policyUsers" formControlName="policyUsers">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                policyUsersOption.id === editForm.get('policyUsers')!.value?.id ? editForm.get('policyUsers')!.value : policyUsersOption
+              "
+              *ngFor="let policyUsersOption of policyUsersSharedCollection; trackBy: trackPolicyUsersById"
+            >
+              {{ policyUsersOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

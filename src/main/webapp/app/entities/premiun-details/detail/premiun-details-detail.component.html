@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="premiunDetails">
+      <h2 data-cy="premiunDetailsDetailsHeading">
+        <span jhiTranslate="policyManagement13FebApp.premiunDetails.detail.title">Premiun Details</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ premiunDetails.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.premium">Premium</span></dt>
+        <dd>
+          <span>{{ premiunDetails.premium }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.otherLoading">Other Loading</span></dt>
+        <dd>
+          <span>{{ premiunDetails.otherLoading }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.otherDiscount">Other Discount</span></dt>
+        <dd>
+          <span>{{ premiunDetails.otherDiscount }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.addOnPremium">Add On Premium</span></dt>
+        <dd>
+          <span>{{ premiunDetails.addOnPremium }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.liabilityPremium">Liability Premium</span></dt>
+        <dd>
+          <span>{{ premiunDetails.liabilityPremium }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.odPremium">Od Premium</span></dt>
+        <dd>
+          <span>{{ premiunDetails.odPremium }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.personalAccidentDiscount">Personal Accident Discount</span></dt>
+        <dd>
+          <span>{{ premiunDetails.personalAccidentDiscount }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.personalAccident">Personal Accident</span></dt>
+        <dd>
+          <span>{{ premiunDetails.personalAccident }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.grossPremium">Gross Premium</span></dt>
+        <dd>
+          <span>{{ premiunDetails.grossPremium }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.gst">Gst</span></dt>
+        <dd>
+          <span>{{ premiunDetails.gst }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.netPremium">Net Premium</span></dt>
+        <dd>
+          <span>{{ premiunDetails.netPremium }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ premiunDetails.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.premiunDetails.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ premiunDetails.lastModifiedBy }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/premiun-details', premiunDetails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

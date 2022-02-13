@@ -1,0 +1,27 @@
+{
+  "policyManagement13FebApp": {
+    "vehicleClass": {
+      "home": {
+        "title": "Vehicle Classes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Vehicle Class",
+        "createOrEditLabel": "Create or edit a Vehicle Class",
+        "notFound": "No Vehicle Classes found"
+      },
+      "created": "A new Vehicle Class is created with identifier {{ param }}",
+      "updated": "A Vehicle Class is updated with identifier {{ param }}",
+      "deleted": "A Vehicle Class is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Vehicle Class {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle Class"
+      },
+      "id": "ID",
+      "name": "Name",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "policy": "Policy"
+    }
+  }
+}

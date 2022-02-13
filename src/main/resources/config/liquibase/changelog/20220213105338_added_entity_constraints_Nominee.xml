@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Nominee.
+    -->
+    <changeSet id="20220213105338-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="policy_id"
+                                 baseTableName="nominee"
+                                 constraintName="fk_nominee__policy_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="policy"/>
+    </changeSet>
+</databaseChangeLog>

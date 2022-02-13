@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="nominee">
+      <h2 data-cy="nomineeDetailsHeading"><span jhiTranslate="policyManagement13FebApp.nominee.detail.title">Nominee</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ nominee.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.nominee.name">Name</span></dt>
+        <dd>
+          <span>{{ nominee.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.nominee.relation">Relation</span></dt>
+        <dd>
+          <span>{{ nominee.relation }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.nominee.nomineePercentage">Nominee Percentage</span></dt>
+        <dd>
+          <span>{{ nominee.nomineePercentage }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.nominee.contactNo">Contact No</span></dt>
+        <dd>
+          <span>{{ nominee.contactNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.nominee.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ nominee.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.nominee.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ nominee.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.nominee.policy">Policy</span></dt>
+        <dd>
+          <div *ngIf="nominee.policy">
+            <a [routerLink]="['/policy', nominee.policy?.id, 'view']">{{ nominee.policy?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/nominee', nominee.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,246 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="policy">
+      <h2 data-cy="policyDetailsHeading"><span jhiTranslate="policyManagement13FebApp.policy.detail.title">Policy</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ policy.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.policyAmount">Policy Amount</span></dt>
+        <dd>
+          <span>{{ policy.policyAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.policyNumber">Policy Number</span></dt>
+        <dd>
+          <span>{{ policy.policyNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.term">Term</span></dt>
+        <dd>
+          <span>{{ policy.term }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.ppt">Ppt</span></dt>
+        <dd>
+          <span>{{ policy.ppt }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.commDate">Comm Date</span></dt>
+        <dd>
+          <span>{{ policy.commDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.proposerName">Proposer Name</span></dt>
+        <dd>
+          <span>{{ policy.proposerName }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.sumAssuredAmount">Sum Assured Amount</span></dt>
+        <dd>
+          <span>{{ policy.sumAssuredAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.premiumMode">Premium Mode</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'policyManagement13FebApp.PremiumMode.' + policy.premiumMode }}">{{ policy.premiumMode }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.basicPremium">Basic Premium</span></dt>
+        <dd>
+          <span>{{ policy.basicPremium }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.extraPremium">Extra Premium</span></dt>
+        <dd>
+          <span>{{ policy.extraPremium }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.gst">Gst</span></dt>
+        <dd>
+          <span>{{ policy.gst }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'policyManagement13FebApp.PolicyStatus.' + policy.status }}">{{ policy.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.totalPremiun">Total Premiun</span></dt>
+        <dd>
+          <span>{{ policy.totalPremiun }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.gstFirstYear">Gst First Year</span></dt>
+        <dd>
+          <span>{{ policy.gstFirstYear }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.netPremium">Net Premium</span></dt>
+        <dd>
+          <span>{{ policy.netPremium }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.taxBeneficiary">Tax Beneficiary</span></dt>
+        <dd>
+          <span>{{ policy.taxBeneficiary }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.policyReceived">Policy Received</span></dt>
+        <dd>
+          <span>{{ policy.policyReceived }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.previousPolicy">Previous Policy</span></dt>
+        <dd>
+          <span>{{ policy.previousPolicy }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.policyStartDate">Policy Start Date</span></dt>
+        <dd>
+          <span>{{ policy.policyStartDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.policyEndDate">Policy End Date</span></dt>
+        <dd>
+          <span>{{ policy.policyEndDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.period">Period</span></dt>
+        <dd>
+          <span>{{ policy.period }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.claimDone">Claim Done</span></dt>
+        <dd>
+          <span>{{ policy.claimDone }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.freeHeathCheckup">Free Heath Checkup</span></dt>
+        <dd>
+          <span>{{ policy.freeHeathCheckup }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.zone">Zone</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'policyManagement13FebApp.Zone.' + policy.zone }}">{{ policy.zone }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.noOfYear">No Of Year</span></dt>
+        <dd>
+          <span>{{ policy.noOfYear }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.floaterSum">Floater Sum</span></dt>
+        <dd>
+          <span>{{ policy.floaterSum }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.tpa">Tpa</span></dt>
+        <dd>
+          <span>{{ policy.tpa }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.paymentDate">Payment Date</span></dt>
+        <dd>
+          <span>{{ policy.paymentDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.policyType">Policy Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'policyManagement13FebApp.PolicyType.' + policy.policyType }}">{{ policy.policyType }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.paToOwner">Pa To Owner</span></dt>
+        <dd>
+          <span>{{ policy.paToOwner }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.paToOther">Pa To Other</span></dt>
+        <dd>
+          <span>{{ policy.paToOther }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.loading">Loading</span></dt>
+        <dd>
+          <span>{{ policy.loading }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.riskCoveredFrom">Risk Covered From</span></dt>
+        <dd>
+          <span>{{ policy.riskCoveredFrom }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.riskCoveredTo">Risk Covered To</span></dt>
+        <dd>
+          <span>{{ policy.riskCoveredTo }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.notes">Notes</span></dt>
+        <dd>
+          <span>{{ policy.notes }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.freeField1">Free Field 1</span></dt>
+        <dd>
+          <span>{{ policy.freeField1 }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.freeField2">Free Field 2</span></dt>
+        <dd>
+          <span>{{ policy.freeField2 }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.freeField3">Free Field 3</span></dt>
+        <dd>
+          <span>{{ policy.freeField3 }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.freeField4">Free Field 4</span></dt>
+        <dd>
+          <span>{{ policy.freeField4 }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.freeField5">Free Field 5</span></dt>
+        <dd>
+          <span>{{ policy.freeField5 }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.maturityDate">Maturity Date</span></dt>
+        <dd>
+          <span>{{ policy.maturityDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.uinNo">Uin No</span></dt>
+        <dd>
+          <span>{{ policy.uinNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ policy.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ policy.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.agency">Agency</span></dt>
+        <dd>
+          <div *ngIf="policy.agency">
+            <a [routerLink]="['/agency', policy.agency?.id, 'view']">{{ policy.agency?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.company">Company</span></dt>
+        <dd>
+          <div *ngIf="policy.company">
+            <a [routerLink]="['/company', policy.company?.id, 'view']">{{ policy.company?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.product">Product</span></dt>
+        <dd>
+          <div *ngIf="policy.product">
+            <a [routerLink]="['/product', policy.product?.id, 'view']">{{ policy.product?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.premiunDetails">Premiun Details</span></dt>
+        <dd>
+          <div *ngIf="policy.premiunDetails">
+            <a [routerLink]="['/premiun-details', policy.premiunDetails?.id, 'view']">{{ policy.premiunDetails?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.vehicleClass">Vehicle Class</span></dt>
+        <dd>
+          <div *ngIf="policy.vehicleClass">
+            <a [routerLink]="['/vehicle-class', policy.vehicleClass?.id, 'view']">{{ policy.vehicleClass?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.bankDetails">Bank Details</span></dt>
+        <dd>
+          <div *ngIf="policy.bankDetails">
+            <a [routerLink]="['/bank-details', policy.bankDetails?.id, 'view']">{{ policy.bankDetails?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.policy.policyUsers">Policy Users</span></dt>
+        <dd>
+          <div *ngIf="policy.policyUsers">
+            <a [routerLink]="['/policy-users', policy.policyUsers?.id, 'view']">{{ policy.policyUsers?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/policy', policy.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

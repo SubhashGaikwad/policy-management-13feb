@@ -1,0 +1,82 @@
+{
+  "applications": "*",
+  "changelogDate": "20220213105343",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "company",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "branch",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "brnachCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Company",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "companyType",
+      "otherEntityRelationshipName": "company",
+      "ownerSide": true,
+      "relationshipName": "companyType",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "product",
+      "otherEntityRelationshipName": "company",
+      "relationshipName": "product",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "company",
+      "relationshipName": "address",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "policy",
+      "otherEntityRelationshipName": "company",
+      "ownerSide": false,
+      "relationshipName": "policy",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
