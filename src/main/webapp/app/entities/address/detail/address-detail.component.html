@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="address">
+      <h2 data-cy="addressDetailsHeading"><span jhiTranslate="policyManagement13FebApp.address.detail.title">Address</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ address.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.address.area">Area</span></dt>
+        <dd>
+          <span>{{ address.area }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.address.landmark">Landmark</span></dt>
+        <dd>
+          <span>{{ address.landmark }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.address.taluka">Taluka</span></dt>
+        <dd>
+          <span>{{ address.taluka }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.address.district">District</span></dt>
+        <dd>
+          <span>{{ address.district }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.address.state">State</span></dt>
+        <dd>
+          <span>{{ address.state }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.address.pincode">Pincode</span></dt>
+        <dd>
+          <span>{{ address.pincode }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.address.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ address.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.address.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ address.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.address.policyUsers">Policy Users</span></dt>
+        <dd>
+          <div *ngIf="address.policyUsers">
+            <a [routerLink]="['/policy-users', address.policyUsers?.id, 'view']">{{ address.policyUsers?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.address.company">Company</span></dt>
+        <dd>
+          <div *ngIf="address.company">
+            <a [routerLink]="['/company', address.company?.id, 'view']">{{ address.company?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/address', address.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

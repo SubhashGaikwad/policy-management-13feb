@@ -1,0 +1,30 @@
+{
+  "policyManagement13FebApp": {
+    "nominee": {
+      "home": {
+        "title": "Nominees",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Nominee",
+        "createOrEditLabel": "Create or edit a Nominee",
+        "notFound": "No Nominees found"
+      },
+      "created": "A new Nominee is created with identifier {{ param }}",
+      "updated": "A Nominee is updated with identifier {{ param }}",
+      "deleted": "A Nominee is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Nominee {{ id }}?"
+      },
+      "detail": {
+        "title": "Nominee"
+      },
+      "id": "ID",
+      "name": "Name",
+      "relation": "Relation",
+      "nomineePercentage": "Nominee Percentage",
+      "contactNo": "Contact No",
+      "lastModified": "Last Modified",
+      "lastModifiedBy": "Last Modified By",
+      "policy": "Policy"
+    }
+  }
+}

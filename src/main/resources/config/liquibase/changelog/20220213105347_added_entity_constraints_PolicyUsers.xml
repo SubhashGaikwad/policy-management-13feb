@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity PolicyUsers.
+    -->
+    <changeSet id="20220213105347-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="users_type_id"
+                                 baseTableName="policy_users"
+                                 constraintName="fk_policy_users__users_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users_type"/>
+    </changeSet>
+</databaseChangeLog>

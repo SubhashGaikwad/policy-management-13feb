@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="member">
+      <h2 data-cy="memberDetailsHeading"><span jhiTranslate="policyManagement13FebApp.member.detail.title">Member</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ member.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.member.name">Name</span></dt>
+        <dd>
+          <span>{{ member.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.member.age">Age</span></dt>
+        <dd>
+          <span>{{ member.age }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.member.relation">Relation</span></dt>
+        <dd>
+          <span>{{ member.relation }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.member.contactNo">Contact No</span></dt>
+        <dd>
+          <span>{{ member.contactNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.member.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ member.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.member.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ member.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.member.policy">Policy</span></dt>
+        <dd>
+          <div *ngIf="member.policy">
+            <a [routerLink]="['/policy', member.policy?.id, 'view']">{{ member.policy?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/member', member.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="vehicleDetails">
+      <h2 data-cy="vehicleDetailsDetailsHeading">
+        <span jhiTranslate="policyManagement13FebApp.vehicleDetails.detail.title">Vehicle Details</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ vehicleDetails.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.vehicleDetails.name">Name</span></dt>
+        <dd>
+          <span>{{ vehicleDetails.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.vehicleDetails.invoiceValue">Invoice Value</span></dt>
+        <dd>
+          <span>{{ vehicleDetails.invoiceValue }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.vehicleDetails.idv">Idv</span></dt>
+        <dd>
+          <span>{{ vehicleDetails.idv }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.vehicleDetails.enginNumber">Engin Number</span></dt>
+        <dd>
+          <span>{{ vehicleDetails.enginNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.vehicleDetails.chassisNumber">Chassis Number</span></dt>
+        <dd>
+          <span>{{ vehicleDetails.chassisNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.vehicleDetails.registrationNumber">Registration Number</span></dt>
+        <dd>
+          <span>{{ vehicleDetails.registrationNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.vehicleDetails.seatingCapacity">Seating Capacity</span></dt>
+        <dd>
+          <span>{{ vehicleDetails.seatingCapacity }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.vehicleDetails.zone">Zone</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'policyManagement13FebApp.Zone.' + vehicleDetails.zone }}">{{ vehicleDetails.zone }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.vehicleDetails.yearOfManufacturing">Year Of Manufacturing</span></dt>
+        <dd>
+          <span>{{ vehicleDetails.yearOfManufacturing }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.vehicleDetails.registrationDate">Registration Date</span></dt>
+        <dd>
+          <span>{{ vehicleDetails.registrationDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.vehicleDetails.lastModified">Last Modified</span></dt>
+        <dd>
+          <span>{{ vehicleDetails.lastModified }}</span>
+        </dd>
+        <dt><span jhiTranslate="policyManagement13FebApp.vehicleDetails.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ vehicleDetails.lastModifiedBy }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/vehicle-details', vehicleDetails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

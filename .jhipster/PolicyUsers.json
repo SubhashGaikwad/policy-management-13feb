@@ -1,0 +1,129 @@
+{
+  "applications": "*",
+  "changelogDate": "20220213105347",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "policy_users",
+  "fields": [
+    {
+      "fieldName": "groupCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "groupHeadName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "birthDate",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "marriageDate",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "userTypeId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "username",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "password",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "imageUrl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "StatusInd",
+      "fieldValues": "A (Active),I (Inactive),D (Deleted)"
+    },
+    {
+      "fieldName": "activated",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "licenceExpiryDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mobileNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "aadharCardNuber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pancardNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "oneTimePassword",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "otpExpiryTime",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastModified",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "PolicyUsers",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "usersType",
+      "otherEntityRelationshipName": "policyUsers",
+      "ownerSide": true,
+      "relationshipName": "usersType",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "policy",
+      "otherEntityRelationshipName": "policyUsers",
+      "relationshipName": "policy",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "policyUsers",
+      "relationshipName": "address",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

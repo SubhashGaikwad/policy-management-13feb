@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Policy.
+    -->
+    <changeSet id="20220213105332-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="agency_id"
+                                 baseTableName="policy"
+                                 constraintName="fk_policy__agency_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="agency"/>
+
+        <addForeignKeyConstraint baseColumnNames="company_id"
+                                 baseTableName="policy"
+                                 constraintName="fk_policy__company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"/>
+
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="policy"
+                                 constraintName="fk_policy__product_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+
+        <addForeignKeyConstraint baseColumnNames="premiun_details_id"
+                                 baseTableName="policy"
+                                 constraintName="fk_policy__premiun_details_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="premiun_details"/>
+
+        <addForeignKeyConstraint baseColumnNames="vehicle_class_id"
+                                 baseTableName="policy"
+                                 constraintName="fk_policy__vehicle_class_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="vehicle_class"/>
+
+        <addForeignKeyConstraint baseColumnNames="bank_details_id"
+                                 baseTableName="policy"
+                                 constraintName="fk_policy__bank_details_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bank_details"/>
+
+        <addForeignKeyConstraint baseColumnNames="policy_users_id"
+                                 baseTableName="policy"
+                                 constraintName="fk_policy__policy_users_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="policy_users"/>
+    </changeSet>
+</databaseChangeLog>
